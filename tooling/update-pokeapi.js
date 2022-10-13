@@ -200,7 +200,6 @@ function httpGetRegion(url) {
                     names['en'] = json.names[pos].name;
                 }
             }
-            console.log(json);
             resolve({
                 id: json.id,
                 main_generation: json.main_generation?.name,
@@ -272,8 +271,8 @@ async function main() {
         return pokemons;
     });
 
-    console.log("Generating pokemons.json: ", pokemons.length)
-    fs.writeFile('pokemons.json', JSON.stringify(pokemons), function (err) {
+    console.log("Generating pokemons.json")
+    fs.writeFile('src/assets/json/pokemons.json', JSON.stringify(pokemons), function (err) {
         if (err) return console.log(err);
     });
 
@@ -286,8 +285,8 @@ async function main() {
         return convertArrayToObject(generations, "name");
     });
 
-    console.log("Generating generations.json: ", generations.length)
-    fs.writeFile('generations.json', JSON.stringify(generations), function (err) {
+    console.log("Generating generations.json")
+    fs.writeFile('src/assets/json/generations.json', JSON.stringify(generations), function (err) {
         if (err) return console.log(err);
     });
 
@@ -297,12 +296,11 @@ async function main() {
     });
 
     const regions = await getRegions(regList).then(regions => {
-        console.log(regions);
         return convertArrayToObject(regions, "name");
     });
 
-    console.log("Generating regions.json: ", regions.length)
-    fs.writeFile('regions.json', JSON.stringify(regions), function (err) {
+    console.log("Generating regions.json")
+    fs.writeFile('src/assets/json/regions.json', JSON.stringify(regions), function (err) {
         if (err) return console.log(err);
     });
 }
