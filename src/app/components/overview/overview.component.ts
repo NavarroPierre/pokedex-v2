@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon, Types } from 'src/app/services/pokemon/element';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
+import { SettingsService } from 'src/app/services/settings/settings.service';
 
 @Component({
   selector: 'app-overview',
@@ -9,7 +10,7 @@ import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 })
 export class OverviewComponent implements OnInit {
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(private pokemonService: PokemonService, private settingsService: SettingsService) { }
 
   pokemons: Array<Pokemon> = [];
 
@@ -23,12 +24,19 @@ export class OverviewComponent implements OnInit {
     })
   }
 
-  getName(pokemon: Pokemon) {
-    return pokemon.name;
+  getName(pokemon: Pokemon): string {
+    return pokemon.names[this.settingsService.lang()] || pokemon.name;
   }
 
   getTypes(pokemon: Pokemon) {
-    return pokemon.types.join('/');
+
+    let types: Array<string> = [];
+
+    pokemon.types.forEach(type => {
+      types.push(Types.get(type)?.translation[this.settingsService.lang()] || type);
+    })
+
+    return types.join('/');
   }
 
   getBackgroundColor(pokemon: Pokemon) {

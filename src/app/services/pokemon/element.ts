@@ -52,8 +52,7 @@ export interface Region {
 
 
 export interface Translation {
-    fr?: string,
-    en?: string
+    [key: string]: string;
 }
 
 export interface Type {

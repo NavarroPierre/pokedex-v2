@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { PokemonService } from './services/pokemon/pokemon.service';
 import { SettingsService } from './services/settings/settings.service';
 import { OverviewComponent } from './components/overview/overview.component';
+import { HeaderComponent } from './components/header/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OverviewComponent
+    OverviewComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
