@@ -16,6 +16,8 @@ export class PokemonService {
   regions: Map<number, Region>;
   generations: Map<number, Generation>;
 
+  maxId: number = 898;
+
   constructor(private http: HttpClient, private toastr: ToastrService) {
     this.pokemons = new Map();
     this.regions = new Map();
@@ -45,7 +47,7 @@ export class PokemonService {
                   ...item
               });
           });
-          return Array.from(this.pokemons.values()).sort((n1,n2) => {
+          return Array.from(this.pokemons.values()).filter((item) => (item.id <= this.maxId)).sort((n1,n2) => {
             if (n1.id > n2.id) {
                 return 1;
             }

@@ -1,8 +1,8 @@
 <div class="main" style="width: 100%; position:absolute;right:0px;left:0px; min-height: 100%;">
-    <h1>PokeDex</h1>
+    <h1>PokeDex V2</h1>
     <div class="poke-container">
       <div *ngFor="let pokemon of pokemons">
-        <div [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">
+        <div class="pokemon" [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">
           <div class="img-container">
             <img [src]="'assets/img/'+pokemon.id+'.png'"/>
           </div>
