@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon, Types } from 'src/app/services/pokemon/element';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 import { SettingsService } from 'src/app/services/settings/settings.service';
@@ -14,6 +14,8 @@ export class OverviewComponent implements OnInit {
 
   pokemons: Array<Pokemon> = [];
 
+  filterValues: Array<Pokemon> = [];
+
   ngOnInit(): void {
     this.refresh();
   }
@@ -21,7 +23,14 @@ export class OverviewComponent implements OnInit {
   refresh(): void {
     this.pokemonService.getPokemons().subscribe(pokemons => {
       this.pokemons = pokemons;
+      this.filterValues = Array.from(this.pokemons);
     })
+  }
+
+  @Input() set filterName(value: string) {
+    this.filterValues = this.pokemons.filter(pokemon => {
+      return this.getName(pokemon).toLowerCase().startsWith(value.toLowerCase())
+    });
   }
 
   getName(pokemon: Pokemon): string {

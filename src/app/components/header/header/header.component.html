@@ -1,9 +1,9 @@
-<div class="header sticky" (click)="changeLang()">
-    <div class="title" routerLink="/pokedex" title="home">
-        <h1>PokeDex</h1><b>v2</b>
+<div class="header sticky">
+    <div class="left" routerLink="/pokedex" title="home">
+        <div class="title"><h1>PokeDex</h1><b>v2</b></div>
     </div>
-    <div class="lang">
-        <img title="fr" *ngIf="lang()=='fr'" class="flag" src="https://tse3.mm.bing.net/th?id=OIP.H1jiSzWKwtR_ixi-3siISwHaE8&pid=Api"/>
-        <img title="en" *ngIf="lang()=='en'" class="flag" src="https://tse1.mm.bing.net/th?id=OIP.1-cMAordBD8677w80v3XrgHaDt&pid=Api"/>
+    <div class="right">
+        <img (click)="changeLang()" title="fr" *ngIf="lang()=='fr'" class="flag" src="https://tse3.mm.bing.net/th?id=OIP.H1jiSzWKwtR_ixi-3siISwHaE8&pid=Api"/>
+        <img (click)="changeLang()" title="en" *ngIf="lang()=='en'" class="flag" src="https://tse1.mm.bing.net/th?id=OIP.1-cMAordBD8677w80v3XrgHaDt&pid=Api"/>
     </div>
 </div>

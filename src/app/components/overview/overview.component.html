@@ -1,18 +1,23 @@
 <div class="main" style="width: 100%; position:absolute;right:0px;left:0px; min-height: 100%;">
-    <div class="poke-container">
-      <div *ngFor="let pokemon of pokemons">
-        <div class="pokemon" [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">
-          <div class="img-container">
-            <img [src]="'assets/img/'+pokemon.id+'.png'"/>
-          </div>
-          <div class="info">
-            <span class="number">
-              {{ pokemon.id.toString().padStart(3, '0') }}
-            </span>
-            <h3 class="name">{{getName(pokemon)}}</h3>
-            <small class="type"><span>{{getTypes(pokemon)}}</span></small>
-          </div>
+  <div class="filter sticky">
+    <div style="width: 100%;">
+      <input type="text" [(ngModel)]="filterName" name="filterName"/>
+    </div>
+  </div>  
+  <div class="poke-container">
+    <div *ngFor="let pokemon of filterValues">
+      <div class="pokemon" [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">
+        <div class="img-container">
+          <img [src]="'assets/img/'+pokemon.id+'.png'"/>
+        </div>
+        <div class="info">
+          <span class="number">
+            {{ pokemon.id.toString().padStart(3, '0') }}
+          </span>
+          <h3 class="name">{{getName(pokemon)}}</h3>
+          <small class="type"><span>{{getTypes(pokemon)}}</span></small>
         </div>
       </div>
     </div>
+  </div>
 </div>
