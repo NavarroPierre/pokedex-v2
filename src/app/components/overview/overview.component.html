@@ -1,5 +1,4 @@
 <div class="main" style="width: 100%; position:absolute;right:0px;left:0px; min-height: 100%;">
-    <h1>PokeDex V2</h1>
     <div class="poke-container">
       <div *ngFor="let pokemon of pokemons">
         <div class="pokemon" [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">
@@ -11,7 +10,7 @@
               {{ pokemon.id.toString().padStart(3, '0') }}
             </span>
             <h3 class="name">{{getName(pokemon)}}</h3>
-            <small class="type">Type: <span>{{getTypes(pokemon)}}</span></small>
+            <small class="type"><span>{{getTypes(pokemon)}}</span></small>
           </div>
         </div>
       </div>
