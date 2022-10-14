@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Pokemon, Types } from 'src/app/services/pokemon/element';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
 import { SettingsService } from 'src/app/services/settings/settings.service';
@@ -28,9 +29,13 @@ export class OverviewComponent implements OnInit {
   }
 
   @Input() set filterName(value: string) {
-    this.filterValues = this.pokemons.filter(pokemon => {
-      return this.getName(pokemon).toLowerCase().startsWith(value.toLowerCase())
+    this.filterValues = this.pokemons
+      .filter(pokemon => {return value === "" || this.getName(pokemon).toLowerCase().includes(value.toLowerCase())
     });
+  }
+
+  @Input() set darkmode(value: string) {
+    console.log(value);
   }
 
   getName(pokemon: Pokemon): string {

@@ -47,7 +47,8 @@ export class PokemonService {
                   ...item
               });
           });
-          return Array.from(this.pokemons.values()).filter((item) => (item.id <= this.maxId)).sort((n1,n2) => {
+          return Array.from(this.pokemons.values())
+          .filter((item) => (item.names !== null && item.names !== undefined)).sort((n1,n2) => {
             if (n1.id > n2.id) {
                 return 1;
             }

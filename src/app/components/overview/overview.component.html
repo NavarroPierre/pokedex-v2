@@ -1,9 +1,9 @@
 <div class="main" style="width: 100%; position:absolute;right:0px;left:0px; min-height: 100%;">
-  <div class="filter sticky">
+  <!--div class="filter sticky">
     <div style="width: 100%;">
       <input type="text" [(ngModel)]="filterName" name="filterName"/>
     </div>
-  </div>  
+  </div-->  
   <div class="poke-container">
     <div *ngFor="let pokemon of filterValues">
       <div class="pokemon" [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">

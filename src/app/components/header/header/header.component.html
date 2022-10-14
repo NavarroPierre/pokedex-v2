@@ -1,9 +1,14 @@
-<div class="header sticky">
+<div id="header" class="header sticky lightmode">
     <div class="left" routerLink="/pokedex" title="home">
         <div class="title"><h1>PokeDex</h1><b>v2</b></div>
     </div>
-    <div class="right">
-        <img (click)="changeLang()" title="fr" *ngIf="lang()=='fr'" class="flag" src="https://tse3.mm.bing.net/th?id=OIP.H1jiSzWKwtR_ixi-3siISwHaE8&pid=Api"/>
-        <img (click)="changeLang()" title="en" *ngIf="lang()=='en'" class="flag" src="https://tse1.mm.bing.net/th?id=OIP.1-cMAordBD8677w80v3XrgHaDt&pid=Api"/>
-    </div>
+    <mat-toolbar color="primary" style="height: 42px;">
+        <div class="flex-stretch"></div>
+        <mat-slide-toggle [formControl]="toggleControl" (change)="toogleMode()" class="mr-8" style="margin-right: 10px;"></mat-slide-toggle>
+        <mat-icon>{{toggleControl.value ? 'bedtime' : 'wb_sunny'}}</mat-icon>
+        <div class="right">
+            <img (click)="changeLang()" title="fr" *ngIf="lang()=='fr'" class="flag" src="https://tse3.mm.bing.net/th?id=OIP.H1jiSzWKwtR_ixi-3siISwHaE8&pid=Api"/>
+            <img (click)="changeLang()" title="en" *ngIf="lang()=='en'" class="flag" src="https://tse1.mm.bing.net/th?id=OIP.1-cMAordBD8677w80v3XrgHaDt&pid=Api"/>
+        </div>
+    </mat-toolbar>
 </div>

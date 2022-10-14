@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { SettingsService } from 'src/app/services/settings/settings.service';
+import { FormControl } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,9 @@ import { SettingsService } from 'src/app/services/settings/settings.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private settingsService: SettingsService) { }
+  toggleControl = new FormControl(false);
+
+  constructor(private settingsService: SettingsService, @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +23,13 @@ export class HeaderComponent implements OnInit {
 
   changeLang() {
     this.settingsService.changeLang();
+  }
+
+  toogleMode() {
+      this.document.getElementsByTagName('body')[0].classList.toggle('lightmode');
+      this.document.getElementsByTagName('body')[0].classList.toggle('darkmode');
+      this.document.getElementById('header')?.classList.toggle('lightmode');
+      this.document.getElementById('header')?.classList.toggle('darkmode');
   }
 
 }
