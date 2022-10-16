@@ -57,7 +57,7 @@ export class OverviewComponent implements OnInit {
     if (pokemon.types.length === 1) {
       return {'backgroundColor': Types.get(pokemon.types[0])?.color };
     } else {
-      return {'background-image': `linear-gradient(${Types.get(pokemon.types[0])?.color}, ${Types.get(pokemon.types[1])?.color})` };
+      return {'background-image': `linear-gradient(110deg, ${Types.get(pokemon.types[0])?.color}, ${Types.get(pokemon.types[1])?.color})` };
     }
   }
 }
