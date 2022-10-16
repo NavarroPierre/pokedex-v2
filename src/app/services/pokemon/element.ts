@@ -60,7 +60,7 @@ export interface Type {
     color?: string
 }
 
-export const Types: Map<String, Type> = new Map([
+export const Types: Map<string, Type> = new Map([
     ['fire',        {translation: {'fr': 'feu', 'en': 'fire'}, color:'#F75231'}] ,
     ['grass',       {translation: {'fr':'plante', 'en':'grass'}, color:'#7BCE52'}],
     ['electric',    {translation: {'fr':'électrique', 'en':'electric'}, color:'#FFC631'}],

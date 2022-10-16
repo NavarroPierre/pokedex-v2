@@ -3,10 +3,83 @@
     <div style="width: 100%;">
       <input type="text" [(ngModel)]="filterName" name="filterName"/>
     </div>
-  </div-->  
+  </div-->
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="filter-menu">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+      Filters
+      </mat-panel-title>
+      <!--mat-panel-description>
+      {{panelOpenState ? 'Click to close' : 'Click to open'}}
+      </mat-panel-description-->
+    </mat-expansion-panel-header>
+    <div style="width: 100%;">
+      Name: <input type="text" [(ngModel)]="filterName" name="filterName"/>
+    </div>
+      
+    <div class="filter-item">
+      <mat-form-field class="chip-list">
+        <mat-chip-list #chipListType>
+          <mat-chip
+            *ngFor="let type of selectedTypes"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeType(type)">
+            {{type}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="Pokemon type(s)"
+            #typeInput
+            [formControl]="typeCtrl"
+            [matAutocomplete]="autocompleteType"
+            [matChipInputFor]="chipListType"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addType($event)">
+        </mat-chip-list>
+        <mat-autocomplete #autocompleteType="matAutocomplete" (optionSelected)="selectedType($event)">
+          <mat-option *ngFor="let type of filteredTypes | async" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    
+    <div class="filter-item">
+      <mat-form-field class="chip-list">
+        <mat-chip-list #chipListGeneration>
+          <mat-chip
+            *ngFor="let generation of selectedGens"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeGen(generation)">
+            {{generation}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input
+            placeholder="Pokemon generation(s)"
+            #genInput
+            [formControl]="genCtrl"
+            [matAutocomplete]="autocompleteGeneration"
+            [matChipInputFor]="chipListGeneration"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addGen($event)">
+        </mat-chip-list>
+        <mat-autocomplete #autocompleteGeneration="matAutocomplete" (optionSelected)="selectedGen($event)">
+          <mat-option *ngFor="let generation of filteredGens | async" [value]="generation">
+            {{generation}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+  </mat-expansion-panel>
+
   <div class="poke-container">
     <div *ngFor="let pokemon of filterValues">
-      <div class="pokemon" [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">
+      <div *ngIf="isVisible(pokemon)" class="pokemon" [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">
         <div class="img-container">
           <img [src]="'assets/img/'+pokemon.id+'.png'"/>
         </div>

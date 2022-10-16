@@ -12,16 +12,41 @@
     background-color: lightcyan;
   }
 
+  .filter-menu {
+    width: 100%;
+    position: fixed;
+    top: 117px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    border-radius: 4px;
+  }
+
   .main {
-    margin-top: 130px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 160px;
     //background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
     //background: linear-gradient(to right, #D4D3DD, #EFEFBB);
   }
   
+  .filter-item {
+    margin-top: 10px;
+    border-bottom: 1px solid;
+    padding-bottom: 4px;
+  }
+
+  .chip-list {
+    width: 100%;
+  }
+
+  .mat-chip-input {
+    border: 0px;
+    outline: none;
+  }
+
   h1 {
     letter-spacing: 3px;
   }

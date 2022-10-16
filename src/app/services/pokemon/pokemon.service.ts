@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { HttpClient } from '@angular/common/http';
 
-import { Generation, Pokemon, Region } from './element';
+import { Generation, Pokemon, Region, Types } from './element';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,17 @@ export class PokemonService {
   pokemons: Map<number, Pokemon>;
   regions: Map<number, Region>;
   generations: Map<number, Generation>;
-
+  types: Array<string> = [];
   maxId: number = 898;
 
   constructor(private http: HttpClient, private toastr: ToastrService) {
     this.pokemons = new Map();
     this.regions = new Map();
     this.generations = new Map();
+  }
+
+  getTypes(): Array<string> {
+    return Array.from(Types.keys());
   }
 
   getPokemons(): Observable<Pokemon[]> {
@@ -85,9 +89,12 @@ export class PokemonService {
     .pipe(
         map(res => {
         res.forEach(item => {
+
+        });
+        Object.entries(res).forEach(([key, item]) => {
           this.regions.set(item.id, <Region>{
-                ...item
-            });
+            ...item
+          });
         });
         return Array.from(this.regions.values()).sort((n1,n2) => {
           if (n1.id > n2.id) {
@@ -125,7 +132,7 @@ export class PokemonService {
     return this.http.get<Generation[]>("/assets/json/generations.json")
     .pipe(
         map(res => {
-        res.forEach(item => {
+        Object.entries(res).forEach(([key, item]) => {
           this.generations.set(item.id, <Generation>{
                 ...item
             });
