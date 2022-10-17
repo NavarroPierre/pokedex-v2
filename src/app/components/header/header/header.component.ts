@@ -30,6 +30,15 @@ export class HeaderComponent implements OnInit {
       this.document.getElementsByTagName('body')[0].classList.toggle('darkmode');
       this.document.getElementById('header')?.classList.toggle('lightmode');
       this.document.getElementById('header')?.classList.toggle('darkmode');
+      Array.prototype.forEach.call(this.document.getElementsByClassName('pokemon'), element => {
+        element.classList.toggle('pokelightmode');
+        element.classList.toggle('pokedarkmode');
+      });
+      Array.prototype.forEach.call(this.document.getElementsByClassName('filter-menu'), element => {
+        element.classList.toggle('pokelightmode');
+        element.classList.toggle('pokedarkmode');
+      });
+      
   }
 
 }

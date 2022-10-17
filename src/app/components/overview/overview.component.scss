@@ -47,6 +47,22 @@
     outline: none;
   }
 
+ .type  {
+    min-width: 50%;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+ }
+
+.pokedarkmode {
+  background-color: gray !important;
+}
+.pokelightmode {
+  background-color: gainsboro !important;
+}
+
   h1 {
     letter-spacing: 3px;
   }

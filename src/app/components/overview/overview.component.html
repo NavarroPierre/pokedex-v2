@@ -4,7 +4,7 @@
       <input type="text" [(ngModel)]="filterName" name="filterName"/>
     </div>
   </div-->
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="filter-menu">
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="filter-menu pokelightmode">
     <mat-expansion-panel-header>
       <mat-panel-title>
       Filters
@@ -79,7 +79,7 @@
 
   <div class="poke-container">
     <div *ngFor="let pokemon of filterValues">
-      <div *ngIf="isVisible(pokemon)" class="pokemon" [ngStyle]="getBackgroundColor(pokemon)" routerLink="/pokemon/{{pokemon.id}}">
+      <div *ngIf="isVisible(pokemon)" class="pokemon pokelightmode"  routerLink="/pokemon/{{pokemon.id}}">
         <div class="img-container">
           <img [src]="'assets/img/'+pokemon.id+'.png'"/>
         </div>
@@ -88,7 +88,7 @@
             {{ pokemon.id.toString().padStart(3, '0') }}
           </span>
           <h3 class="name">{{getName(pokemon)}}</h3>
-          <small class="type"><span>{{getTypes(pokemon)}}</span></small>
+          <h4 class="type" [ngStyle]="getBackgroundColor(pokemon)" ><span>{{getTypes(pokemon)}}</span></h4>
         </div>
       </div>
     </div>
