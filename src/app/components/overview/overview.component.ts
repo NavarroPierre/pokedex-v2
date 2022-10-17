@@ -19,7 +19,7 @@ export class OverviewComponent implements OnInit {
 
   filterValues: Array<Pokemon> = [];
   
-  panelOpenState = false;
+  panelOpenState = true;
   removable = true;
   addOnBlur = false;
   selectable = true;

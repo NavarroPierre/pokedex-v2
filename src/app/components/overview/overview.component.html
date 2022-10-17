@@ -4,7 +4,7 @@
       <input type="text" [(ngModel)]="filterName" name="filterName"/>
     </div>
   </div-->
-  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="filter-menu pokelightmode">
+  <mat-expansion-panel (opened)="panelOpenState === true" (closed)="panelOpenState === false" class="filter-menu pokelightmode">
     <mat-expansion-panel-header>
       <mat-panel-title>
       Filters
@@ -13,8 +13,10 @@
       {{panelOpenState ? 'Click to close' : 'Click to open'}}
       </mat-panel-description-->
     </mat-expansion-panel-header>
-    <div style="width: 100%;">
-      Name: <input type="text" [(ngModel)]="filterName" name="filterName"/>
+    <div style="width: 100%;" class="filter-item">
+      <mat-form-field class="chip-list">
+        <input type="text" [(ngModel)]="filterName" name="filterName" placeholder="Pokemon name" class="input-name"/>
+      </mat-form-field>
     </div>
       
     <div class="filter-item">
@@ -57,7 +59,7 @@
             {{generation}}
             <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
-          <input
+          <input style="background-color: inherit;"
             placeholder="Pokemon generation(s)"
             #genInput
             [formControl]="genCtrl"

@@ -34,7 +34,7 @@
   
   .filter-item {
     margin-top: 10px;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid #3f51b5;
     padding-bottom: 4px;
   }
 
@@ -42,10 +42,32 @@
     width: 100%;
   }
 
+  .mat-chip {
+    background-color: #3f51b5;
+    color: white;
+  }
+
   .mat-chip-input {
     border: 0px;
     outline: none;
+    background-color: inherit;
+    font-size: large;
   }
+
+  .input-name {
+    background-color: inherit;
+    border: 0px;
+    font-size: large;
+    outline: none !important;
+    width: 100%;
+  }
+
+  ::placeholder {
+    color: lightslategray !important;
+    opacity: 1;
+    font-style: italic;
+  }
+
 
  .type  {
     min-width: 50%;
@@ -61,6 +83,11 @@
 }
 .pokelightmode {
   background-color: gainsboro !important;
+}
+
+.mat-expansion-panel-header-title {
+  color: #3f51b5 !important;
+  font-size: x-large;
 }
 
   h1 {
