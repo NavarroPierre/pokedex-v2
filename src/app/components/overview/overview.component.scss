@@ -36,6 +36,7 @@
     margin-top: 10px;
     border-bottom: 1px solid #3f51b5;
     padding-bottom: 4px;
+    width: 100%;
   }
 
   .chip-list {
@@ -63,7 +64,7 @@
   }
 
   ::placeholder {
-    color: lightslategray !important;
+    color: black !important;
     opacity: 1;
     font-style: italic;
   }
@@ -83,6 +84,12 @@
 }
 .pokelightmode {
   background-color: gainsboro !important;
+}
+
+.mat-expansion-panel-header {
+  height: auto;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .mat-expansion-panel-header-title {
