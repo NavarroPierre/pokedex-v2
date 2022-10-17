@@ -4,7 +4,7 @@
       <input type="text" [(ngModel)]="filterName" name="filterName"/>
     </div>
   </div-->
-  <mat-expansion-panel (opened)="panelOpenState === true" (closed)="panelOpenState === false" class="filter-menu pokelightmode">
+  <mat-expansion-panel [(expanded)]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="filter-menu pokelightmode">
     <mat-expansion-panel-header>
       <mat-panel-title>
       Filters

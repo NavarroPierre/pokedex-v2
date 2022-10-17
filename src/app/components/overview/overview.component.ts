@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Pokemon, Types } from 'src/app/services/pokemon/element';
 import { PokemonService } from 'src/app/services/pokemon/pokemon.service';
@@ -19,7 +19,7 @@ export class OverviewComponent implements OnInit {
 
   filterValues: Array<Pokemon> = [];
   
-  panelOpenState = true;
+  panelOpenState = false;
   removable = true;
   addOnBlur = false;
   selectable = true;
@@ -61,6 +61,10 @@ export class OverviewComponent implements OnInit {
     });
   }
   
+  @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    this.panelOpenState = false;
+  }
+
   ngOnInit(): void {
     this.refresh();
 
