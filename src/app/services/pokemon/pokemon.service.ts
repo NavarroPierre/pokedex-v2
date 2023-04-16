@@ -16,7 +16,7 @@ export class PokemonService {
   regions: Map<number, Region>;
   generations: Map<number, Generation>;
   types: Array<string> = [];
-  maxId: number = 898;
+  maxId: number = 1008;
 
   constructor(private http: HttpClient, private toastr: ToastrService) {
     this.pokemons = new Map();
